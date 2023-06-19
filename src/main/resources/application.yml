@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://10.199.107.239:3306/spring?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://10.1.0.239:3306/spring
     username: spring
     password: P@ssw0rd
 
