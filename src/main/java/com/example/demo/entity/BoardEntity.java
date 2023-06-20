@@ -34,6 +34,9 @@ public class BoardEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
+    @Column
+    private Long fileId;
+
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdDate;
@@ -42,10 +45,11 @@ public class BoardEntity {
     private LocalDateTime modifiedDate;
 
     @Builder
-    public BoardEntity(Long id, String author, String title, String content) {
+    public BoardEntity(Long id, String author, String title, String content, Long fileId) {
         this.id = id;
         this.author = author;
         this.title = title;
         this.content = content;
+        this.fileId = fileId;
     }
 }
