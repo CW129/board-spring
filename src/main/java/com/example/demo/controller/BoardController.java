@@ -71,6 +71,7 @@ public class BoardController {
         } catch (Exception e){
             e.printStackTrace();
         }
+        log.debug("test");
         return "redirect:/";
     }
     @GetMapping("/post/{id}")
