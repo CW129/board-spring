@@ -4,17 +4,22 @@ package com.example.demo.controller;
 import com.example.demo.controller.dto.FileDto;
 import com.example.demo.service.FileService;
 import com.example.demo.util.MD5Generator;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import com.example.demo.controller.dto.BoardDto;
 import com.example.demo.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.util.List;
 
 @Controller
+@Slf4j
 public class BoardController {
     private BoardService boardService;
     private FileService fileService;
@@ -28,6 +33,10 @@ public class BoardController {
     public String list(Model model) {
         List<BoardDto> boardDtoList = boardService.getBoardList();
         model.addAttribute("postList", boardDtoList);
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        log.info("Header : " + request.getHeader("X-FORWARDED-FOR"));
+        log.info("Remote IP : " + request.getRemoteAddr());
+
         return "board/list.html";
     }
     @GetMapping("/post")
