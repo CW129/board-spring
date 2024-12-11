@@ -4,4 +4,4 @@
 .idea/
 .mvn/
 .code-workspace
-/target/
+/target
